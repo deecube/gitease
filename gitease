@@ -57,18 +57,18 @@ if [ $? == 0 ]
 }
 
 git_push(){
-echo "Pushing to master"
-git push origin master
+echo "Pushing to $OPTARG"
+git push origin $OPTARG
 if [ $? == 0 ]
 then 
-	echo "Successfully pushed to master"
+	echo "Successfully pushed to $OPTARG"
 else
 	echo "Try Again"
 fi
 }
 
 
-while getopts :sam:p opt
+while getopts :sam:p: opt
 do
 case "$opt" in
 	s)git_status;;
