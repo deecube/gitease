@@ -18,22 +18,17 @@ then
 	echo "Not enough arguments"
 	usage
 fi
+
 git_status(){
 echo "Please make sure that you are connected to the internet "
-#read -p "Do you want to see the current status of the repo ? [Hit Enter for Yes]" resp
-#if [[ $resp = "" ]];then
-	echo "Displaying the current status of the repo "
-	git status
-#fi
+echo "Displaying the current status of the repo "
+git status
 }
+
 git_add(){
 echo -n "Adding all changes to the commit" 
-#read resp
-#if [[ $resp = "" ]]
-#then 
-#echo "Adding changes to commit"
-	git add -A
-#fi
+git add -A
+
 if [ $? == 0 ]
 	then
 		echo "Added all changes successfully"
