@@ -5,7 +5,7 @@ cat<<EOF
 Usage: $(basename $0) OPTIONS
 where OPTIONS:
 -s) show status
--a) add all
+-a) add file/files provided as a parameter (-a A for adding all files)
 -m) commit with message provided as parameter
 -p) push
 EOF
@@ -20,14 +20,16 @@ then
 fi
 
 git_status(){
+
 echo "Please make sure that you are connected to the internet "
 echo "Displaying the current status of the repo "
 git status
 }
 
 git_add(){
+
 echo -n "Adding all changes to the commit" 
-git add -A
+git add $OPTARG
 
 if [ $? == 0 ]
 	then
@@ -52,6 +54,7 @@ if [ $? == 0 ]
 }
 
 git_push(){
+
 echo "Pushing to $OPTARG"
 git push origin $OPTARG
 if [ $? == 0 ]
@@ -63,7 +66,7 @@ fi
 }
 
 
-while getopts :sam:p: opt
+while getopts :sa:m:p: opt
 do
 case "$opt" in
 	s)git_status;;
